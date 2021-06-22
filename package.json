@@ -1,0 +1,27 @@
+{
+  "name": "coc-cli",
+  "version": "1.0.0",
+  "description": "node cli tool",
+  "main": "index.js",
+  "bin": {
+    "coc": "./coc.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anoop-dev0/coc-cli.git"
+  },
+  "author": "Anoop Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anoop-dev0/coc-cli/issues"
+  },
+  "homepage": "https://github.com/anoop-dev0/coc-cli#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "got": "^11.8.2",
+    "minimist": "^1.2.5"
+  }
+}
