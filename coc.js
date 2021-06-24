@@ -4,7 +4,7 @@ const minimist = require('minimist');
 const colors = require('colors');
 
 const commandsToBeUsed = {};
-const configPath ="/src/repositories.js";
+const configPath ="/repositories.js";
 
 switch(require("os").platform()){
     case 'win32':
