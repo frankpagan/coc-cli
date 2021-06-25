@@ -32,18 +32,19 @@ if (argv.length < 1) {
     process.exit(1);
 }
 
+
 const args = minimist(argv, {
     alias: { config: 'c', absolutePath: 'cf' },
-    default: { config: configPath }
+    default: { config: configPath },
+    stopEarly:true
 });
-
 exec(`${commandsToBeUsed['currentDirectory']}`, (error, stdout, stderr) => {
     if (error) {
-        console.log(`error: ${error.message}`.red);
+        console.log(`error: ${error.message}`);
         return;
     }
     if (stderr) {
-        console.log(`stderr: ${stderr}`.magenta);
+        console.log(`stderr: ${stderr}`);
         return;
     }
     let repos;
@@ -56,16 +57,15 @@ exec(`${commandsToBeUsed['currentDirectory']}`, (error, stdout, stderr) => {
     repos.forEach(specificRepo => {
         exec(`cd ${specificRepo.path} ${commandsToBeUsed['cmdJoiner']} ${command}`, (err, stdo, stde) => {
             if (err) {
-                console.log(`error: ${err.message}`.red);
+                if(err.message.startsWith('Command failed'))
+                    console.log(`error: ${err.message}`);
                 return;
             }
             if (stde) {
-                console.log(`stderr: ${stde}`.magenta);
+                console.log(`stderr: ${stde}`);
                 return;
             }
-            console.log(`=> ${stdo}`);
+            console.log(stdo);
         });
     })
 })
-
-
